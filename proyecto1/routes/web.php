@@ -10,6 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
+
 Route::group(['middleware' => 'auth'], function() 
 {
 	
@@ -31,6 +33,8 @@ Route::group(['middleware' => 'auth'], function()
 
 	Route::delete('/catalog/delete/{id}','CatalogController@deleteMovie')->name('catalog.delete')->middleware('admin');
 
+	Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+	Route::post('register', 'Auth\RegisterController@register');
+
 });
 
-Auth::routes();

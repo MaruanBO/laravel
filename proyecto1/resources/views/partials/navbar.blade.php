@@ -11,14 +11,9 @@
             <li class="nav-item">
             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
             </li>
-            @if (Route::has('register'))
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                </li>
-            @endif
         <div class="dropdown">
           <button style="color:#777" class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Lang
+            Lenguage
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a style="color:#777" class="dropdown-item" href="{{ url('lang/en') }}">EN</a>
@@ -30,27 +25,34 @@
 
 
 
-        @if(Auth::check() )
+        @if(Auth::check())
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item {{ Request::is('catalog') && ! Request::is('catalog/create')? 'active' : ''}}">
                         <a class="nav-link" href="{{url('/catalog')}}">
                             <span class="glyphicon glyphicon-film" aria-hidden="true"></span>
-                            Catálogo
+                            <i class="fa fa-film" aria-hidden="true"> Catálogo</i>
                         </a>
                     </li>
                     @if(auth()->user()->is_admin == 1)
-                    <li class="nav-item {{  Request::is('catalog/create') ? 'active' : ''}}">
-                        <a class="nav-link" href="{{url('/catalog/create')}}">
-                            <span>&#10010</span> Nueva película
-                        </a>
-                    </li>
+                    
+                        <li class="nav-item {{  Request::is('catalog/create') ? 'active' : ''}}">
+                            <a class="nav-link" href="{{url('/catalog/create')}}">
+                                <i class="fa fa-plus" aria-hidden="true"> Nueva película</i>
+                            </a>
+                        </li>
+                        @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}"><i class="fa fa-user-plus" aria-hidden="true"> {{ __('Register') }}</i></a>
+                        </li>
+                        @endif
+                    
                     @endif
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }}<span class="caret"></span>
+                        <i class="fa fa-user" aria-hidden="true"> {{ Auth::user()->name }}</i><span class="caret"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('logout') }}"
