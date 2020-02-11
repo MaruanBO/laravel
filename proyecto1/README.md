@@ -11,5 +11,7 @@
 + This repository has all laravel exercise and extensions.
 ## Demostration  
 + http://maruanservicios.ml/
-Client user : user@example.com
-Password client : Usuario234/
+## Login details
+Thats details isn't for administration user its just for client.
++ Client user : user@example.com
++ Password client : Usuario234/
